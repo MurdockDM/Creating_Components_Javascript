@@ -1,13 +1,13 @@
 // const createStudentComponent = (name, subject, info) => {
-    // return `
-        // <div class="student">
-            // <h1>Alejandro Font</h1>
-            // <section>Science</section>
-            // // <aside>
-            //     Wore pants that were too short for his legs.
-            //     Was an incredible friend to his teammates.
-            // </aside>
-        // </div>`
+// return `
+// <div class="student">
+// <h1>Alejandro Font</h1>
+// <section>Science</section>
+// // <aside>
+//     Wore pants that were too short for his legs.
+//     Was an incredible friend to his teammates.
+// </aside>
+// </div>`
 // }
 
 // Then store a reference to an existing HTML element
@@ -91,12 +91,12 @@ const students = [
     }
 ]
 
-const createStudentComponent = (name, subject, info, score) => {
+const createStudentComponent = (object) => {
     return `
         <div class="student ">
-            <h1 class = "xx-large ${score < 60 ? 'failing' : 'passing'}">${name}</h1>
-            <section class = "bordered dashed section--padded">${subject}</section>
-            <aside class = "pushRight">${info}</aside>
+            <h1 class = "xx-large ${object.score >= 60 ? 'passing' : 'failing'}">${object.name}</h1>
+            <section class = "bordered dashed section--padded">${object.subject}</section>
+            <aside class = "pushRight">${object.info}</aside>
         </div>
     `
 }
@@ -105,11 +105,5 @@ const studentContainer = document.querySelector("#container")
 
 
 for (let i = 0; i < students.length; i++) {
-    const student = students[i]
-    studentContainer.innerHTML += createStudentComponent(
-        student.name,
-        student.subject,
-        student.info,
-        student.score
-    )
+    studentContainer.innerHTML += createStudentComponent(students[i])
 }
